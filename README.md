@@ -1,28 +1,62 @@
 # MotoMarket
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+Una aplicación web para ver y gestionar un catálogo de motocicletas con funcionalidades de visualización, mapas y citas.
 
-## Development server
+## Características
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Lista y detalle de motocicletas
+- Cálculo automático del precio de reventa
+- Mapas interactivos con ubicaciones
+- Sistema de citas
+- Soporte multiidioma (español/inglés)
+- Diseño responsivo
 
-## Code scaffolding
+## Requisitos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Node.js (versión 16 o superior)
+- Angular CLI (versión 17)
 
-## Build
+## Instalación
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clona el repositorio:
+```bash
+git clone [url-del-repositorio]
+cd moto-market
+```
 
-## Running unit tests
+2. Instala las dependencias:
+```bash
+npm install
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Desarrollo
 
-## Running end-to-end tests
+Para ejecutar en modo desarrollo:
+```bash
+ng serve
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+La aplicación estará disponible en `http://localhost:4200`
 
-## Further help
+## Construcción
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# moto-market
+Para crear una versión de producción:
+```bash
+ng build
+```
+
+Los archivos generados se guardarán en la carpeta `dist/`
+
+## Despliegue
+
+### Servidor web estático
+1. Ejecuta `ng build` para generar los archivos
+2. Copia el contenido de `dist/moto-market/` a tu servidor web
+3. Configura el servidor para redirigir todas las rutas al archivo `index.html`
+
+## Tecnologías utilizadas
+
+- Angular 17
+- Bootstrap 5
+- Leaflet (mapas)
+- ngx-translate (internacionalización)
