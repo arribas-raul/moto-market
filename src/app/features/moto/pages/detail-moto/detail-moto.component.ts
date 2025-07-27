@@ -21,7 +21,7 @@ export class DetailMotoComponent implements OnInit, OnDestroy {
     isLoading = false;
     private destroy$ = new Subject<void>();
 
-    motoDto: MotoDto = { id : '' };
+    moto: MotoDto = { id : '' };
 
     constructor(
         private route: ActivatedRoute,
@@ -41,7 +41,7 @@ export class DetailMotoComponent implements OnInit, OnDestroy {
                 const id = params.get('id');
 
                 if (id) {
-                    this.motoDto.id = id;
+                    this.moto.id = id;
                     this.getDataMoto();
                 } else {
                     console.error('ID de moto no encontrado en la URL');
@@ -49,7 +49,7 @@ export class DetailMotoComponent implements OnInit, OnDestroy {
             });
     }
     private getDataMoto(): void {
-        if (!this.motoDto.id) {
+        if (!this.moto.id) {
             console.error('ID de moto no válido');
             this.isLoading = false;
             return;
@@ -57,25 +57,57 @@ export class DetailMotoComponent implements OnInit, OnDestroy {
 
         this.isLoading = true;
         
-        this.motoHttpService.detail(this.motoDto.id)
+        this.motoHttpService.detail(this.moto.id)
             .pipe(takeUntil(this.destroy$))
             .subscribe({
                 next: (moto: MotoDto | null) => {
                     if (moto) {
-                        this.motoDto = { ...moto };
+                        this.moto = { ...moto };
+
+                        this.moto.precioReventa = this.calculateRebuyValue() // Default to 0 if not provided
                         console.log('Moto cargada:', moto);
+                        // Success is handled automatically by the service
                     } else {
                         console.error('Moto no encontrada');
+                        // Error toast already shown by GlobalErrorService
                     }
                 },
                 error: (error) => {
                     console.error('Error al cargar la moto:', error);
+                    // Error toast already shown by GlobalErrorService
                 },
                 complete: () => {
                     this.isLoading = false;
                 }
             });
     }
+
+    private calculateRebuyValue(): number {
+        if(this.moto.precioCompra === undefined) return 0;
+
+        const now = new Date();
+
+        const datePurchase = new Date(this.moto.fechaCompra!);
+
+        let years = now.getFullYear() - datePurchase!.getFullYear();
+
+        const monthDiff = now.getMonth() - datePurchase.getMonth();
+        const dayDiff = now.getDate() - datePurchase.getDate();
+
+        if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+            years--;
+        }
+        if (years < 0) {
+            years = 0;
+        }
+
+        const currentValue = this.moto.precioCompra / Math.pow(2, years);
+
+        return currentValue;
+    }
+
+
+
 
 
     goBack(): void {

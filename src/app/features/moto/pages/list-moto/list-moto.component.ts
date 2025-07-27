@@ -17,6 +17,7 @@ import { MotoDto } from '../../dtos';
 export class ListMotoComponent implements OnInit, OnDestroy {
   
   isLoading = false;
+  motos: MotoDto[] = [];
   private destroy$ = new Subject<void>();
 
   constructor(
@@ -34,6 +35,7 @@ export class ListMotoComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (motos: MotoDto[]) => {
+          this.motos = motos;
           console.log(motos);
         },
         error: (error) => {

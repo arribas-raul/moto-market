@@ -4,6 +4,7 @@ export interface MotoDto {
   id: string;
   fechaCompra?: string; // Format: "YYYY-MM-DD"
   precioCompra?: number;
+  precioReventa?: number;
   modelo?: string;
   nombre?: string;
   coordenadas?: CoordenadasDto;

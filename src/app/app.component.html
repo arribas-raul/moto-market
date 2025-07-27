@@ -1,7 +1,13 @@
-<app-header></app-header>
+<div class="app-container d-flex flex-column min-vh-100">
+  <app-header></app-header>
 
-<router-outlet></router-outlet>
+  <!-- Global Toast Component -->
+  <app-toast></app-toast>
 
-<app-footer></app-footer>
+  <!-- Main content grows to push footer down -->
+  <main class="flex-fill">
+    <router-outlet></router-outlet>
+  </main>
 
-
+  <app-footer></app-footer>
+</div>

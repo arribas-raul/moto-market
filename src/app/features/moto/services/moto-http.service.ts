@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { MotoDto } from '../dtos';
 import { catchError, Observable, of } from 'rxjs';
+import { GlobalErrorService } from '../../../shared/services/global-error.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,10 @@ import { catchError, Observable, of } from 'rxjs';
 export class MotoHttpService {
   private readonly baseUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private globalErrorService: GlobalErrorService
+  ) {}
 
   /**
    * Gets the complete list of motorcycles
@@ -22,9 +26,8 @@ export class MotoHttpService {
     
     return this.http.get<MotoDto[]>(url).pipe(
       catchError((error) => {
-        this.handleError(error, 'Error getting motorcycle list');
+        this.globalErrorService.handleHttpError(error);
         return of([]);
-
       })
     );
   }
@@ -42,33 +45,9 @@ export class MotoHttpService {
 
     return this.http.get<MotoDto>(url).pipe(
       catchError((error) => {
-        this.handleError(error, `Error getting motorcycle detail with ID: ${id}`);
+        this.globalErrorService.handleHttpError(error);
         return of(null);
       })
     );
-  }
-
-  /**
-   * Handles HTTP request errors
-   */
-  private handleError(error: any, customMessage: string): void {
-    console.error(customMessage, error);
-
-    if (error instanceof HttpErrorResponse) {
-      // HTTP server error
-      if (error.error instanceof ErrorEvent) {
-        // Client-side error
-        console.error('Client error:', error.error.message);
-      } else {
-        // Server-side error
-        console.error(
-          `Server error code: ${error.status}\n` +
-          `Message: ${error.message}`
-        );
-      }
-    } else {
-      // JavaScript or application error
-      console.error('Application error:', error.message || error);
-    }
   }
 }

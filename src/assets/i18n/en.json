@@ -44,5 +44,14 @@
     "touring": "Touring",
     "naked": "Naked",
     "adventure": "Adventure"
+  },
+  "TOAST": {
+    "NOT_FOUND": "Not found",
+    "BAD_REQUEST": "Bad request",
+    "UNAUTHORIZED": "Unauthorized",
+    "FORBIDDEN": "Forbidden",
+    "SERVER_ERROR": "Server error",
+    "CONNECTION_ERROR": "Connection error",
+    "UNKNOWN_ERROR": "Unknown error"
   }
 }

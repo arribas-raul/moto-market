@@ -1,0 +1,22 @@
+<!-- Toast container positioned below navbar -->
+<div *ngIf="toastMessage.visible" class="toast-container">
+  <div class="toast toast-error">
+    <!-- Error icon -->
+    <div class="toast-icon">
+      <i class="fas fa-exclamation-triangle"></i>
+    </div>
+    
+    <!-- Message -->
+    <div class="toast-message">
+      {{ toastMessage.message | translate }}
+    </div>
+    
+    <!-- Close button -->
+    <button 
+      type="button" 
+      class="toast-close"
+      (click)="closeToast()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+</div>

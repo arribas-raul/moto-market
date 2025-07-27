@@ -2,16 +2,43 @@
 
 <div class="container mt-4">
   <h2>Lista de Motos</h2>
-  <p>Aquí puedes ver todas las motos disponibles:</p>
   
-  <!-- Enlace de ejemplo para navegar al detalle -->
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Moto de Ejemplo</h5>
-      <p class="card-text">Esta es una moto de prueba para demostrar la navegación.</p>
-      <a [routerLink]="['/motos/detail', 'MOTO_B']" class="btn btn-primary">
-        Ver Detalle
-      </a>
+<!-- component.html -->
+<div class="container py-2">
+  <div class="row gy-3">
+    <div class="col-12" *ngFor="let moto of motos">
+      <div class="card d-flex flex-row align-items-center p-2 shadow-sm">
+        <!-- Imagen a la izquierda -->
+        <img
+          src="assets/images/ico.png"
+          alt="Imagen de {{ moto.nombre }}"
+          class="img-fluid rounded me-3"
+          style="width: 80px; height: 80px; object-fit: cover;"
+        />
+
+        <!-- Información -->
+        <div>
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="card-title mb-1">{{ moto.nombre }}</h5>
+          </div>
+          <ul class="list-unstyled mb-0">
+            <li><strong>Modelo:</strong> {{ moto.modelo }}</li>
+            <li><strong>Fecha:</strong> {{ moto.fechaCompra }}</li>
+            <li><strong>Precio:</strong> {{ moto.precioCompra | currency:'EUR' }}</li>
+          </ul>
+        </div>
+
+        <!-- Botón alineado a la derecha -->
+        <a
+          [routerLink]="['/motos/detail', moto.id]"
+          class="btn btn-primary btn-sm ms-auto"
+        >
+          <i class="bi bi-eye me-1"></i>
+          Ver Detalle
+        </a>
+      </div>
     </div>
   </div>
+</div>
+
 </div>

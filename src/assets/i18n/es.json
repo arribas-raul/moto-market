@@ -44,5 +44,14 @@
     "touring": "Turismo",
     "naked": "Naked",
     "adventure": "Aventura"
+  },
+  "TOAST": {
+    "NOT_FOUND": "No encontrado",
+    "BAD_REQUEST": "Solicitud incorrecta",
+    "UNAUTHORIZED": "No autorizado",
+    "FORBIDDEN": "Acceso prohibido",
+    "SERVER_ERROR": "Error del servidor",
+    "CONNECTION_ERROR": "Error de conexión",
+    "UNKNOWN_ERROR": "Error desconocido"
   }
 }
