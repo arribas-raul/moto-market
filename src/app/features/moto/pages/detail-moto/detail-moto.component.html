@@ -61,6 +61,31 @@
                 
                 </div>
             </div>
+
+            <!-- Map Section -->
+            <div class="card shadow-sm" *ngIf="moto.coordenadas">
+                <div class="card-header bg-primary text-white">
+                    <h6 class="mb-0">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        {{ 'MAP.LOCATION' | translate }}
+                    </h6>
+                </div>
+                <div class="card-body p-0">
+                    <div 
+                        leaflet 
+                        [leafletOptions]="mapOptions"
+                        [leafletLayers]="mapLayers"
+                        (leafletMapReady)="onMapReady($event)"
+                        style="height: 300px; width: 100%;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- No location message -->
+            <div class="alert alert-info" *ngIf="!moto.coordenadas && !isLoading">
+                <i class="fas fa-info-circle me-2"></i>
+                {{ 'MAP.NO_LOCATION' | translate }}
+            </div>
         </div>
     </div>
 </div>

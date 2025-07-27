@@ -53,5 +53,15 @@
     "SERVER_ERROR": "Server error",
     "CONNECTION_ERROR": "Connection error",
     "UNKNOWN_ERROR": "Unknown error"
+  },
+  "MAP": {
+    "LOCATION": "Motorcycle location",
+    "LOADING": "Loading map...",
+    "ERROR": "Error loading map",
+    "NO_LOCATION": "Location not available"
+  },
+
+   "appointment": {
+    "message": "Would you like to confirm the appointment?"
   }
 }

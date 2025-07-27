@@ -1,8 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { Observable, Subject, switchMap, takeUntil } from 'rxjs';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import * as L from 'leaflet';
 
 import { AppointmentModalComponent } from '../appointment-modal/appointment-modal.component';
 import { AppointmentModalService } from '../../services/appointment-modal.service';
@@ -12,16 +14,30 @@ import { MotoDto } from '../../dtos';
 @Component({
   selector: 'app-detail-moto',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslateModule, AppointmentModalComponent],
+  imports: [CommonModule, RouterModule, TranslateModule, AppointmentModalComponent, LeafletModule],
   templateUrl: './detail-moto.component.html',
   styleUrl: './detail-moto.component.scss'
 })
-export class DetailMotoComponent implements OnInit, OnDestroy {
+export class DetailMotoComponent implements OnInit, AfterViewInit, OnDestroy {
 
     isLoading = false;
     private destroy$ = new Subject<void>();
 
     moto: MotoDto = { id : '' };
+
+    // Map properties
+    mapOptions: L.MapOptions = {
+        layers: [
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '© OpenStreetMap contributors'
+            })
+        ],
+        zoom: 15,
+        center: L.latLng(40.4168, -3.7038) // Default center (Madrid)
+    };
+    mapLayers: L.Layer[] = [];
+    mapReady = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -32,6 +48,10 @@ export class DetailMotoComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.getUrlParams();
+    }
+
+    ngAfterViewInit(): void {
+        // Map initialization handled by leaflet directive
     }
     
     private getUrlParams(): void {
@@ -66,6 +86,10 @@ export class DetailMotoComponent implements OnInit, OnDestroy {
 
                         this.moto.precioReventa = this.calculateRebuyValue() // Default to 0 if not provided
                         console.log('Moto cargada:', moto);
+                        
+                        // Update map if coordinates are available
+                        this.updateMapLocation();
+                        
                         // Success is handled automatically by the service
                     } else {
                         console.error('Moto no encontrada');
@@ -80,6 +104,32 @@ export class DetailMotoComponent implements OnInit, OnDestroy {
                     this.isLoading = false;
                 }
             });
+    }
+
+    private updateMapLocation(): void {
+        if (this.moto.coordenadas) {
+            const { latitud, longitud } = this.moto.coordenadas;
+            
+            // Update map center
+            this.mapOptions = {
+                ...this.mapOptions,
+                center: L.latLng(latitud, longitud)
+            };
+
+            // Create marker for motorcycle location
+            const motorcycleIcon = L.icon({
+                iconUrl: 'assets/images/icon_map.png',
+                iconSize: [32, 32],
+                iconAnchor: [16, 32],
+                popupAnchor: [0, -32]
+            });
+
+            const marker = L.marker([latitud, longitud], { icon: motorcycleIcon })
+                .bindPopup(`<strong>${this.moto.nombre}</strong><br>${this.moto.modelo}`);
+
+            this.mapLayers = [marker];
+            this.mapReady = true;
+        }
     }
 
     private calculateRebuyValue(): number {
@@ -106,9 +156,10 @@ export class DetailMotoComponent implements OnInit, OnDestroy {
         return currentValue;
     }
 
-
-
-
+    onMapReady(map: L.Map): void {
+        // Map is ready, we can perform additional operations if needed
+        console.log('Map ready:', map);
+    }
 
     goBack(): void {
         this.router.navigate(['/motos']);

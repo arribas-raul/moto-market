@@ -53,5 +53,15 @@
     "SERVER_ERROR": "Error del servidor",
     "CONNECTION_ERROR": "Error de conexión",
     "UNKNOWN_ERROR": "Error desconocido"
+  },
+  "MAP": {
+    "LOCATION": "Ubicación de la moto",
+    "LOADING": "Cargando mapa...",
+    "ERROR": "Error al cargar el mapa",
+    "NO_LOCATION": "Ubicación no disponible"
+  },
+
+  "appointment": {
+    "message": "¿Desea confirmar la cita?"
   }
 }
