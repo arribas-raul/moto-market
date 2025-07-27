@@ -1,8 +1,9 @@
-:host {
-  .card {
-    transition: transform 0.2s ease;
-  }
-  .card:hover {
-    transform: translateY(-4px);
-  }
+/* elimina margen extra entre cards */
+.clickable-card {
+  margin-bottom: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.clickable-card:hover {
+  background-color: #f8f9fa;
 }

@@ -1,67 +1,26 @@
 {
-  "WELCOME": "Welcome",
-  "TITLE": "Motorcycle Market",
-  "DESCRIPTION": "Find the perfect motorcycle for you",
-  "SEARCH": "Search",
-  "FILTER": "Filter",
-  "PRICE": "Price",
-  "BRAND": "Brand",
-  "MODEL": "Model",
-  "YEAR": "Year",
-  "MILEAGE": "Mileage",
-  "CONTACT": "Contact",
-  "BUY_NOW": "Buy now",
-  "VIEW_DETAILS": "View details",
-  "LANGUAGE": "Language",
-  "SPANISH": "Spanish",
-  "ENGLISH": "English",
-  "MOTOS": {
-    "LIST_TITLE": "Motorcycle List",
-    "DETAIL_TITLE": "Motorcycle Detail",
-    "NO_MOTOS_FOUND": "No motorcycles found",
-    "LOADING": "Loading...",
-    "AVAILABLE": "Available",
-    "NOT_AVAILABLE": "Not available",
-    "ENGINE": "Engine",
-    "CATEGORY": "Category",
-    "LOCATION": "Location",
-    "CONTACT_INFO": "Contact information",
-    "PHONE": "Phone",
-    "EMAIL": "Email",
-    "FILTERS": "Filters",
-    "MIN_PRICE": "Min price",
-    "MAX_PRICE": "Max price",
-    "MIN_YEAR": "Min year",
-    "MAX_YEAR": "Max year",
-    "ALL_BRANDS": "All brands",
-    "ALL_CATEGORIES": "All categories",
-    "CLEAR_FILTERS": "Clear filters",
-    "APPLY_FILTERS": "Apply filters"
+  "title": "Motorcycle market",
+  "description": "Find the perfect motorcycle for you",
+  "language": "Language",
+  "spanish": "Spanish",
+  "english": "English",
+  "toast": {
+    "not_found": "Not found",
+    "bad_request": "Bad request",
+    "unauthorized": "Unauthorized",
+    "forbidden": "Forbidden",
+    "server_error": "Server error",
+    "connection_error": "Connection error",
+    "unknown_error": "Unknown error"
   },
-  "CATEGORIES": {
-    "sport": "Sport",
-    "cruiser": "Cruiser",
-    "touring": "Touring",
-    "naked": "Naked",
-    "adventure": "Adventure"
+  "map": {
+    "location": "Motorcycle location",
+    "loading": "Loading map...",
+    "error": "Error loading map",
+    "no_location": "Location not available"
   },
-  "TOAST": {
-    "NOT_FOUND": "Not found",
-    "BAD_REQUEST": "Bad request",
-    "UNAUTHORIZED": "Unauthorized",
-    "FORBIDDEN": "Forbidden",
-    "SERVER_ERROR": "Server error",
-    "CONNECTION_ERROR": "Connection error",
-    "UNKNOWN_ERROR": "Unknown error"
-  },
-  "MAP": {
-    "LOCATION": "Motorcycle location",
-    "LOADING": "Loading map...",
-    "ERROR": "Error loading map",
-    "NO_LOCATION": "Location not available"
-  },
-
-   "appointment": {
-    "message": "Would you like to confirm the appointment?"
+  "appointment": {
+    "title": "Would you like to confirm the appointment?",
+    "message": "By confirming, you secure your spot and will receive a reminder 24 hours in advance."
   }
 }

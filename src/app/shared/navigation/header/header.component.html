@@ -3,7 +3,7 @@
   <div class="container">
     <a class="navbar-brand fw-bold" [routerLink]="['/']">
       <i class="fas fa-motorcycle me-2"></i>
-      {{ 'TITLE' | translate }}
+      {{ 'title' | translate }}
     </a>
 
     <!-- Botón toggler para móvil -->
@@ -23,7 +23,7 @@
             data-bs-toggle="dropdown"
           >
             <i class="fas fa-globe me-1"></i>
-            {{ 'LANGUAGE' | translate }}
+            {{ 'language' | translate }}
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
@@ -32,7 +32,7 @@
                 [class.active]="currentLanguage === 'es'"
                 (click)="switchLanguage('es')"
               >
-                🇪🇸 {{ 'SPANISH' | translate }}
+                🇪🇸 {{ 'spanish' | translate }}
               </a>
             </li>
             <li>
@@ -41,7 +41,7 @@
                 [class.active]="currentLanguage === 'en'"
                 (click)="switchLanguage('en')"
               >
-                🇺🇸 {{ 'ENGLISH' | translate }}
+                🇺🇸 {{ 'english' | translate }}
               </a>
             </li>
           </ul>

@@ -1,44 +1,51 @@
-
-
+<!-- component.html -->
 <div class="container mt-4">
   <h2>Lista de Motos</h2>
-  
-<!-- component.html -->
-<div class="container py-2">
-  <div class="row gy-3">
-    <div class="col-12" *ngFor="let moto of motos">
-      <div class="card d-flex flex-row align-items-center p-2 shadow-sm">
-        <!-- Imagen a la izquierda -->
-        <img
-          src="assets/images/ico.png"
-          alt="Imagen de {{ moto.nombre }}"
-          class="img-fluid rounded me-3"
-          style="width: 80px; height: 80px; object-fit: cover;"
-        />
 
-        <!-- Información -->
-        <div>
-          <div class="d-flex justify-content-between align-items-start">
-            <h5 class="card-title mb-1">{{ moto.nombre }}</h5>
+  <div class="row gy-0"> 
+    <div class="col-12 mb-2" *ngFor="let moto of motos">
+      <a
+        [routerLink]="['/motos/detail', moto.id]"
+        class="card clickable-card text-decoration-none text-body"
+      >
+        <div class="row g-0 align-items-center">
+          
+          <!-- Imagen más pequeña -->
+          <div class="col-auto">
+            <img
+              src="assets/images/ico.png"
+              alt="Imagen de {{ moto.nombre }}"
+              class="img-fluid rounded-start"
+              style="width: 100px; object-fit: cover;"
+            />
           </div>
-          <ul class="list-unstyled mb-0">
-            <li><strong>Modelo:</strong> {{ moto.modelo }}</li>
-            <li><strong>Fecha:</strong> {{ moto.fechaCompra }}</li>
-            <li><strong>Precio:</strong> {{ moto.precioCompra | currency:'EUR' }}</li>
-          </ul>
-        </div>
+          
+          <!-- Contenido -->
+          <div class="col ms-2">
+            <div class="card-body py-2 px-1">
+              <h5 class="card-title mb-1">{{ moto.nombre }}</h5>
+              <hr class="my-2">
+              <p class="card-text mb-1">
+                <strong>Modelo:</strong> {{ moto.modelo }}
+              </p>
+              <p class="card-text mb-1">
+                <strong>Fecha:</strong> {{ moto.fechaCompra | date:'dd/MM/yyyy' }}
+                <span class="mx-3">|</span>
+                <strong>Precio: </strong>
+                <span class="badge bg-primary">
+                  {{ moto.precioCompra | currency:'EUR':'symbol':'1.0-0' }}
+                </span>
+              </p>
+            </div>
+          </div>
 
-        <!-- Botón alineado a la derecha -->
-        <a
-          [routerLink]="['/motos/detail', moto.id]"
-          class="btn btn-primary btn-sm ms-auto"
-        >
-          <i class="bi bi-eye me-1"></i>
-          Ver Detalle
-        </a>
-      </div>
+          <!-- Flecha -->
+          <div class="col-auto pe-2">
+            <i class="bi bi-chevron-right fs-5 text-secondary"></i>
+          </div>
+
+        </div>
+      </a>
     </div>
   </div>
-</div>
-
 </div>
