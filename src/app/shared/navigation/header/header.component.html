@@ -1,0 +1,50 @@
+<!-- Navbar con Bootstrap -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand fw-bold" [routerLink]="['/']">
+      <i class="fas fa-motorcycle me-2"></i>
+      {{ 'TITLE' | translate }}
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/motos']" routerLinkActive="active">
+            <i class="fas fa-list me-1"></i>
+            {{ 'MOTOS.LIST_TITLE' | translate }}
+          </a>
+        </li>
+      </ul>
+      
+      <div class="navbar-nav">
+        <!-- Selector de idioma -->
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <i class="fas fa-globe me-1"></i>
+            {{ 'LANGUAGE' | translate }}
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" 
+                 [class.active]="currentLanguage === 'es'"
+                 (click)="switchLanguage('es')">
+                🇪🇸 {{ 'SPANISH' | translate }}
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" 
+                 [class.active]="currentLanguage === 'en'"
+                 (click)="switchLanguage('en')">
+                🇺🇸 {{ 'ENGLISH' | translate }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

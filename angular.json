@@ -13,6 +13,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "es",
+        "locales": {
+          "en": "src/locale/messages.en.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -54,6 +60,11 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "en": {
+              "aot": true,
+              "outputPath": "dist/moto-market/en/",
+              "i18nMissingTranslation": "error"
             }
           },
           "defaultConfiguration": "production"
@@ -66,6 +77,9 @@
             },
             "development": {
               "buildTarget": "moto-market:build:development"
+            },
+            "en": {
+              "buildTarget": "moto-market:build:en"
             }
           },
           "defaultConfiguration": "development"
