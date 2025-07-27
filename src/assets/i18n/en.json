@@ -19,8 +19,29 @@
     "error": "Error loading map",
     "no_location": "Location not available"
   },
+  "list": {
+    "title": "Motorcycle List",
+    "model": "Model",
+    "date": "Date",
+    "price": "Price"
+  },
+  "detail": {
+    "back": "Back to list",
+    "appointment": "Book appointment",
+    "model": "Model",
+    "date": "Purchase date",
+    "price": "Price",
+    "buy": "Buy",
+    "sell": "Sell"
+  },
   "appointment": {
     "title": "Would you like to confirm the appointment?",
-    "message": "By confirming, you secure your spot and will receive a reminder 24 hours in advance."
+    "message": "By confirming, you secure your spot and will receive a reminder 24 hours in advance.",
+    "accept": "Accept"
+  },
+  "notfound": {
+    "title": "Page not found",
+    "message": "The page you are looking for does not exist or has been moved.",
+    "back": "Back to home"
   }
 }

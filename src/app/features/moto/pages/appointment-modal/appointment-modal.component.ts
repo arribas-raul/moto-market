@@ -38,7 +38,7 @@ export class AppointmentModalComponent implements OnInit, OnDestroy {
   }
 
   acceptModal() {
-    // Lógica de aceptar aquí si es necesaria
+    
     this.modalService.closeModal();
   }
 }

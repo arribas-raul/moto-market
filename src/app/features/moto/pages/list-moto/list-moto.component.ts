@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MotoHttpService } from '../../services/moto-http.service';
 import { Subject, takeUntil } from 'rxjs';
 import { MotoDto } from '../../dtos';
@@ -19,13 +19,18 @@ export class ListMotoComponent implements OnInit, OnDestroy {
   isLoading = false;
   motos: MotoDto[] = [];
   private destroy$ = new Subject<void>();
+  private langChangeSub: any;
 
   constructor(
-    private motoHttpService: MotoHttpService
+    private motoHttpService: MotoHttpService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
     this.loadMotos();
+    this.langChangeSub = this.translate.onLangChange.subscribe(() => {
+      this.loadMotos();
+    });
   }
 
   loadMotos(): void {
@@ -50,5 +55,8 @@ export class ListMotoComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+    if (this.langChangeSub) {
+      this.langChangeSub.unsubscribe();
+    }
   }
 }

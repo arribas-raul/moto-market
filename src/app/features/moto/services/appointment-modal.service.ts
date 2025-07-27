@@ -11,8 +11,7 @@ export class AppointmentModalService {
   isOpen$ = this.isOpenSubject.asObservable();
   message$ = this.messageSubject.asObservable();
 
-  openModal(message: string = 'Mensaje por defecto') {
-    this.messageSubject.next(message);
+  openModal() {
     this.isOpenSubject.next(true);
   }
 

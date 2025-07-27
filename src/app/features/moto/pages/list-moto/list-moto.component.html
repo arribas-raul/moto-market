@@ -1,6 +1,6 @@
 <!-- component.html -->
 <div class="container mt-4">
-  <h2>Lista de Motos</h2>
+  <h2>{{ 'list.title' | translate }}</h2>
 
   <div class="row gy-0"> 
     <div class="col-12 mb-2" *ngFor="let moto of motos">
@@ -10,7 +10,6 @@
       >
         <div class="row g-0 align-items-center">
           
-          <!-- Imagen más pequeña -->
           <div class="col-auto">
             <img
               src="assets/images/ico.png"
@@ -20,18 +19,17 @@
             />
           </div>
           
-          <!-- Contenido -->
           <div class="col ms-2">
             <div class="card-body py-2 px-1">
               <h5 class="card-title mb-1">{{ moto.nombre }}</h5>
               <hr class="my-2">
               <p class="card-text mb-1">
-                <strong>Modelo:</strong> {{ moto.modelo }}
+                <strong>{{ 'list.model' | translate }}:</strong> {{ moto.modelo }}
               </p>
               <p class="card-text mb-1">
-                <strong>Fecha:</strong> {{ moto.fechaCompra | date:'dd/MM/yyyy' }}
+                <strong>{{ 'list.date' | translate }}:</strong> {{ moto.fechaCompra | date:'dd/MM/yyyy' }}
                 <span class="mx-3">|</span>
-                <strong>Precio: </strong>
+                <strong>{{ 'list.price' | translate }}: </strong>
                 <span class="badge bg-primary">
                   {{ moto.precioCompra | currency:'EUR':'symbol':'1.0-0' }}
                 </span>
@@ -39,7 +37,6 @@
             </div>
           </div>
 
-          <!-- Flecha -->
           <div class="col-auto pe-2">
             <i class="bi bi-chevron-right fs-5 text-secondary"></i>
           </div>

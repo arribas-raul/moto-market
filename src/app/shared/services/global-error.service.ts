@@ -15,30 +15,30 @@ export class GlobalErrorService {
   handleHttpError(error: any, customMessage?: string): void {
     console.error('HTTP Error:', error);
 
-    let errorMessage = customMessage || 'TOAST.NOT_FOUND';
+    let errorMessage = customMessage || 'toast.not_found';
 
     if (error instanceof HttpErrorResponse) {
       switch (error.status) {
         case 404:
-          errorMessage = 'TOAST.NOT_FOUND';
+          errorMessage = 'toast.not_found';
           break;
         case 400:
-          errorMessage = 'TOAST.BAD_REQUEST';
+          errorMessage = 'toast.bad_request';
           break;
         case 401:
-          errorMessage = 'TOAST.UNAUTHORIZED';
+          errorMessage = 'toast.unauthorized';
           break;
         case 403:
-          errorMessage = 'TOAST.FORBIDDEN';
+          errorMessage = 'toast.forbidden';
           break;
         case 500:
-          errorMessage = 'TOAST.SERVER_ERROR';
+          errorMessage = 'toast.server_error';
           break;
         case 0:
-          errorMessage = 'TOAST.CONNECTION_ERROR';
+          errorMessage = 'toast.connection_error';
           break;
         default:
-          errorMessage = 'TOAST.UNKNOWN_ERROR';
+          errorMessage = 'toast.unknown_error';
       }
     }
 

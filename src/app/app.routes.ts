@@ -9,5 +9,9 @@ export const routes: Routes = [
   {
     path: 'motos',
     loadChildren: () => import('./features/moto/moto.routes').then(r => r.MOTO_ROUTES)
+  },
+  {
+    path: '**',
+    loadComponent: () => import('./shared/pages/not-found/not-found.component').then(m => m.NotFoundComponent)
   }
 ];

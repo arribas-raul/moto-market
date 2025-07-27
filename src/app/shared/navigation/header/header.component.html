@@ -1,4 +1,4 @@
-<!-- Navbar con Bootstrap -->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
     <a class="navbar-brand fw-bold" [routerLink]="['/']">
@@ -6,15 +6,12 @@
       {{ 'title' | translate }}
     </a>
 
-    <!-- Botón toggler para móvil -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-      <!-- Aplica ms-auto para empujar este bloque a la derecha -->
       <ul class="navbar-nav ms-auto">
-        <!-- Selector de idioma -->
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"

@@ -1,1 +1,16 @@
-// Estilos específicos del footer si son necesarios
+.custom-footer {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 576px) {
+  .custom-footer {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    border-radius: 0;
+  }
+}
+

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Observable, Subject, switchMap, takeUntil } from 'rxjs';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import * as L from 'leaflet';
@@ -39,19 +39,24 @@ export class DetailMotoComponent implements OnInit, AfterViewInit, OnDestroy {
     mapLayers: L.Layer[] = [];
     mapReady = false;
 
+    private langChangeSub: any;
+
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private appointmentModalService: AppointmentModalService,
-        private motoHttpService: MotoHttpService
+        private motoHttpService: MotoHttpService,
+        private translate: TranslateService
     ) {}
 
     ngOnInit(): void {
         this.getUrlParams();
+        this.langChangeSub = this.translate.onLangChange.subscribe(() => {
+            this.getUrlParams();
+        });
     }
 
     ngAfterViewInit(): void {
-        // Map initialization handled by leaflet directive
     }
     
     private getUrlParams(): void {
@@ -84,21 +89,16 @@ export class DetailMotoComponent implements OnInit, AfterViewInit, OnDestroy {
                     if (moto) {
                         this.moto = { ...moto };
 
-                        this.moto.precioReventa = this.calculateRebuyValue() // Default to 0 if not provided
-                        console.log('Moto cargada:', moto);
+                        this.moto.precioReventa = this.calculateRebuyValue() 
                         
-                        // Update map if coordinates are available
                         this.updateMapLocation();
                         
-                        // Success is handled automatically by the service
                     } else {
                         console.error('Moto no encontrada');
-                        // Error toast already shown by GlobalErrorService
                     }
                 },
                 error: (error) => {
                     console.error('Error al cargar la moto:', error);
-                    // Error toast already shown by GlobalErrorService
                 },
                 complete: () => {
                     this.isLoading = false;
@@ -157,7 +157,6 @@ export class DetailMotoComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     onMapReady(map: L.Map): void {
-        // Map is ready, we can perform additional operations if needed
         console.log('Map ready:', map);
     }
 
@@ -166,11 +165,14 @@ export class DetailMotoComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     openAppointmentModal(): void {
-        this.appointmentModalService.openModal('¿Deseas agendar una cita para ver esta moto?');
+        this.appointmentModalService.openModal();
     }
 
     ngOnDestroy(): void {
         this.destroy$.next();
         this.destroy$.complete();
+        if (this.langChangeSub) {
+            this.langChangeSub.unsubscribe();
+        }
     }
 }

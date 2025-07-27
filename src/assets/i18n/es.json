@@ -19,8 +19,29 @@
     "error": "Error al cargar el mapa",
     "no_location": "Ubicación no disponible"
   },
+  "list": {
+    "title": "Lista de Motos",
+    "model": "Modelo",
+    "date": "Fecha",
+    "price": "Precio"
+  },
+  "detail": {
+    "back": "Volver a la lista",
+    "appointment": "Solicitar cita",
+    "model": "Modelo",
+    "date": "Fecha de compra",
+    "price": "Precio",
+    "buy": "Compra",
+    "sell": "Venta"
+  },
   "appointment": {
     "title": "¿Desea confirmar la cita?",
-    "message": "Al confirmar, te aseguramos tu plaza y recibirás un recordatorio 24 h antes"
+    "message": "Al confirmar, te aseguramos tu plaza y recibirás un recordatorio 24 h antes",
+    "accept": "Aceptar"
+  },
+  "notfound": {
+    "title": "Página no encontrada",
+    "message": "La página que buscas no existe o ha sido movida.",
+    "back": "Volver al inicio"
   }
 }
