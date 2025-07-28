@@ -32,11 +32,12 @@
     "date": "Fecha de compra",
     "price": "Precio",
     "buy": "Compra",
-    "sell": "Venta"
+    "sell": "Venta",
+    "sell_tooltip": "El valor mostrado a continuación es una estimación de precio de recompra aproximado, es necesario realizar una tasación en un taller. Por favor, consulta con tu concesionario para obtener una oferta simple."
   },
   "appointment": {
-    "title": "¿Desea confirmar la cita?",
-    "message": "Al confirmar, te aseguramos tu plaza y recibirás un recordatorio 24 h antes",
+    "title": "Cita solicitada",
+    "message": "Su concesionario se pondrá en contacto pronto, para concerta cita.",
     "accept": "Aceptar"
   },
   "notfound": {

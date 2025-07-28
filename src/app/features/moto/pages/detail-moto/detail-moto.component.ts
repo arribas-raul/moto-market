@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { Observable, Subject, switchMap, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import * as L from 'leaflet';
 
@@ -21,6 +21,7 @@ import { MotoDto } from '../../dtos';
 export class DetailMotoComponent implements OnInit, AfterViewInit, OnDestroy {
 
     isLoading = false;
+    showTooltip = false;
     private destroy$ = new Subject<void>();
 
     moto: MotoDto = { id : '' };

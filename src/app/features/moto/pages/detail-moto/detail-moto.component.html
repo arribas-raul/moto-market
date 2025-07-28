@@ -52,14 +52,18 @@
                                     {{ 'detail.buy' | translate }}: {{ moto.precioCompra | currency:'EUR':'symbol':'1.0-0' }}
                                     </span>
 
-                                   
                                     <i class="bi bi-arrow-right-short fs-4 text-secondary"></i>
 
-                                    
                                     <span class="badge bg-success d-flex align-items-center py-2 px-3">
                                     <i class="bi bi-currency-euro me-1"></i>
                                     {{ 'detail.sell' | translate }}: {{ moto.precioReventa | currency:'EUR':'symbol':'1.0-0' }}
                                     </span>
+
+                                    <i class="bi bi-question-circle ms-2 text-info" 
+                                       style="cursor: pointer;"
+                                       (click)="showTooltip = !showTooltip"
+                                       [attr.aria-expanded]="showTooltip">
+                                    </i>
                                 </div>
                             </dd>
                             </dl>
@@ -67,9 +71,16 @@
                     </div>
                 
                 </div>
+                
+                <!-- Tooltip que ocupa todo el ancho de la tarjeta -->
+                <div class="alert alert-info small m-3 mt-0 d-flex align-items-start" 
+                    *ngIf="showTooltip" style="margin-bottom: 0;">
+                    <i class="bi bi-info-circle me-3 mt-1 flex-shrink-0"></i>
+                    <span class="flex-grow-1">{{ 'detail.sell_tooltip' | translate }}</span>
+                </div>
             </div>
 
-           
+
             <div class="card shadow-sm" *ngIf="moto.coordenadas">
                 <div class="card-header bg-primary text-white">
                     <h6 class="mb-0">

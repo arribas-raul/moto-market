@@ -32,11 +32,12 @@
     "date": "Purchase date",
     "price": "Price",
     "buy": "Buy",
-    "sell": "Sell"
+    "sell": "Sell",
+    "sell_tooltip": "The value shown below is an approximate buyback price estimate, a valuation at a workshop is required. Please consult your dealer for a simple offer."
   },
   "appointment": {
-    "title": "Would you like to confirm the appointment?",
-    "message": "By confirming, you secure your spot and will receive a reminder 24 hours in advance.",
+    "title": "Appointment requested",
+    "message": "Your dealer will contact you soon to schedule an appointment.",    
     "accept": "Accept"
   },
   "notfound": {
